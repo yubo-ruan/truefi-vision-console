@@ -5,12 +5,19 @@ import { contracts, wallets } from './constants'
 
 const [network, provider, wallet, contractAt] = connect()
 const TrustToken = contractAt('TrustToken', contracts.tru)
+const tfi = new ethers.Contract(contracts.tfi, ['function totalSupply() public view returns (uint256)'], wallet)
+
 
 const MAX_SUPPLY: BigNumber = BigNumber.from('145000000000000000')
+// calculate total supply through tru contract
+export const getTfiTotalSupply = async () => {
+    const tru = await tfi.connect(wallet)
+    const supply = await tfi.totalSupply()
+    return supply
+}
 
 // calculate total supply through tru contract
-export const getTotalSupply = async () => {
-    
+export const getTruTotalSupply = async () => {
     const tru = await TrustToken.connect(wallet)
     const supply = await tru.totalSupply()
     return supply
@@ -18,7 +25,7 @@ export const getTotalSupply = async () => {
 
 // calculate burned as max supply - total supply
 export const getBurned = async () => {
-    const supply = await getTotalSupply()
+    const supply = await getTruTotalSupply()
     const burned = MAX_SUPPLY.sub(supply)
     return burned
 }

@@ -19,7 +19,8 @@ export const contracts = {
     uniTusdTfiDistributor: "0xCc527F4f8c76dB1EBA217d001cCc6f8bD9e0D86E",
     uniEthTruDistributor: "0x8EFF7d12118Fd599772D6448CDAd11D5fb2568e0",
     balBalTruDistributor: "0x4A90472cD446A1686FB6d7e86aCE50AF03e71073",
-    creditMarketDistributor: "0x440ed3e4b10b12fA2bab441a3c44B9550BA9Df32"
+    creditMarketDistributor: "0x440ed3e4b10b12fA2bab441a3c44B9550BA9Df32",
+    uniswapEthUsdc: "0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc"
 }
 
 export const wallets = {
