@@ -24,11 +24,12 @@ export const getAllLoanCreated = async () => {
         const para = await loanToken.getParameters()
         loans.push({'borrower': await loanToken.borrower(), 
                     'amount': para[0]/1e18,
-                    'term': para[1]/1e5,
-                    'apy': para[2]/1e2,
+                    'term': para[2]/1e5,
+                    'apy': para[1]/1e2,
                     'profit': await loanToken.profit()/1e18,
                     'blockNumber' : res[i]['blockNumber']
         })
     }
     return loans
 }
+
