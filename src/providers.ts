@@ -6,7 +6,7 @@ const connect = (): [string, providers.Provider, Wallet] => {
 
   // set provider from infura & network
   const provider = new providers.InfuraProvider(
-    network, 'e33335b99d78415b82f8b9bc5fdc44c0')
+    network, process.env.INFURA)
 
   // use private key for wallet
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
