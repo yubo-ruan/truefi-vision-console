@@ -1,9 +1,8 @@
-import { ethers, providers, utils, Wallet } from 'ethers'
-import { getContract } from './utils'
+import { ethers, providers, Wallet } from 'ethers'
 
-const connect = (): [string, providers.Provider, Wallet, any] => {
+const connect = (): [string, providers.Provider, Wallet] => {
   // get network from args
-  const network = process.argv[2] || 'mainnet'
+  const network = 'mainnet'
 
   // set provider from infura & network
   const provider = new providers.InfuraProvider(
@@ -11,10 +10,8 @@ const connect = (): [string, providers.Provider, Wallet, any] => {
 
   // use private key for wallet
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider)
-
-  const contractAt = getContract(wallet)
-
-  return [network, provider, wallet, contractAt]
+  
+  return [network, provider, wallet]
 }
 
 export { connect }

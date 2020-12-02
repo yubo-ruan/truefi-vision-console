@@ -20,7 +20,9 @@ export const contracts = {
     uniEthTruDistributor: "0x8EFF7d12118Fd599772D6448CDAd11D5fb2568e0",
     balBalTruDistributor: "0x4A90472cD446A1686FB6d7e86aCE50AF03e71073",
     creditMarketDistributor: "0x440ed3e4b10b12fA2bab441a3c44B9550BA9Df32",
-    uniswapEthUsdc: "0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc"
+    uniswapEthUsdc: "0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc",
+    trueFarmTfi: "0x8fd832757f58f71bac53196270a4a55c8e1a29d9",
+    trueFarmUniEth: "0xed45cf4895c110f464ce857ebe5f270949ec2ff4"
 }
 
 export const wallets = {

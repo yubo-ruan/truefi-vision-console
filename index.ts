@@ -1,15 +1,35 @@
-import {getTruTotalSupply,getBurned,getCirculatingSupply,getTfiTotalSupply} from './src/supply'
-import {getTruPrice,getEthPrice,getTruPriceInEth} from './src/price'
+import {contracts} from './src/constants'
+import {getTruStat} from './src/tru'
+import {getTfiTotalSupply, getPoolValue, getPoolJoined, getPoolExited} from './src/tfi'
+import {getTruPrice} from './src/price'
+import {getAPY} from './src/truefarm'
+import {getAllLoanCreated} from './src/loan'
 
 
-getTruTotalSupply().then(res => console.log("TRU totalSupply: " + parseInt(res['_hex'],16)))
-getBurned().then(res => console.log("TRU burned: " + parseInt(res['_hex'],16)))
-getCirculatingSupply().then(res => console.log("TRU CirculatingSupply: " + parseInt(res['_hex'],16)))
 
 
-getTruPrice().then(res => console.log("TRU price: " + res + " USD"))
-getTruPriceInEth().then(res => console.log("TRU price: " + res + " ETH"))
-getEthPrice().then(res => console.log("ETH price: " + res + " USD"))
+getTruStat().then(res => console.log(res))
+getTruPrice().then(res => console.log(res))
 
+getTfiTotalSupply().then(res => console.log("TFI totalSupply: " + res))
+getPoolValue().then(res => console.log("Pool value: " + res + " TUSD"))
+getAPY(contracts.trueFarmTfi).then(res => console.log("TrueFi LP Daily: " + res[0] + "%" + " Weekly: " + res[1] + "%" + " APY: " + res[2] + "%"))
+getAPY(contracts.trueFarmUniEth).then(res => console.log("Uniswap ETH/TRU Daily: " + res[0] + "%" + " Weekly: " + res[1] + "%" + " APY: " + res[2] + "%"))
 
-getTfiTotalSupply().then(res => console.log("TFI totalSupply: " + parseInt(res['_hex'],16)/1e18))
+getAllLoanCreated().then(res => {
+    res.forEach(element => {
+        console.log(element)
+    })
+})
+
+getPoolJoined().then(res => {
+    res.forEach(element => {
+        console.log(element)
+    })
+})
+
+getPoolExited().then(res => {
+    res.forEach(element => {
+        console.log(element)
+    })
+})
